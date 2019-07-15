@@ -5,6 +5,7 @@
 // *** Dependencies
 // =============================================================
 var express = require("express");
+var dotenv = require("dotenv").config();
 
 // Sets up the Express App
 // =============================================================
