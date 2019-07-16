@@ -36,7 +36,7 @@ module.exports = function (sequelize, DataTypes) {
   User.associate = function(models) {
     // Associating Users with Likes
     // When a User is deleted, also delete associated likes
-    User.hasMany(models.Like, {
+    User.hasMany(models.Likes, {
       onDelete: "cascade"
     }); 
   };
