@@ -1,8 +1,8 @@
 $(document).ready(function() {
   /* global moment */
 
-  // blogContainer holds all of our posts
-  var blogContainer = $(".blog-container");
+  // homeContainer holds all of our posts
+  var homeContainer = $(".home-container");
   var postCategorySelect = $("#category");
   // Click events for the edit and delete buttons
   $(document).on("click", "button.delete", handlePostDelete);
@@ -10,7 +10,7 @@ $(document).ready(function() {
   // Variable to hold our posts
   var posts;
 
-  // The code below handles the case where we want to get blog posts for a specific user
+  // The code below handles the case where we want to get home posts for a specific user
   // Looks for a query param in the url for user_id
   var url = window.location.search;
   var userId;
@@ -53,14 +53,14 @@ $(document).ready(function() {
       });
   }
 
-  // InitializeRows handles appending all of our constructed post HTML inside blogContainer
+  // InitializeRows handles appending all of our constructed post HTML inside homeContainer
   function initializeRows() {
-    blogContainer.empty();
+    homeContainer.empty();
     var postsToAdd = [];
     for (var i = 0; i < posts.length; i++) {
       postsToAdd.push(createNewRow(posts[i]));
     }
-    blogContainer.append(postsToAdd);
+    homeContainer.append(postsToAdd);
   }
 
   // This function constructs a post's HTML
@@ -80,7 +80,7 @@ $(document).ready(function() {
     var newPostTitle = $("<h2>");
     var newPostDate = $("<small>");
     var newPostuser = $("<h5>");
-    newPostuser.text("Written by: " + post.user.name);
+    newPostuser.text("Written by: " + post.user.username);
     newPostuser.css({
       float: "right",
       color: "blue",
@@ -130,12 +130,12 @@ $(document).ready(function() {
     if (id) {
       partial = " for user #" + id;
     }
-    blogContainer.empty();
+    homeContainer.empty();
     var messageH2 = $("<h2>");
     messageH2.css({ "text-align": "center", "margin-top": "50px" });
     messageH2.html("No posts yet" + partial + ", navigate <a href='/post" + query +
     "'>here</a> in order to get started.");
-    blogContainer.append(messageH2);
+    homeContainer.append(messageH2);
   }
 
 });
