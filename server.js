@@ -6,6 +6,7 @@
 // =============================================================
 var express = require("express");
 var dotenv = require("dotenv").config();
+var sequelize = require("sequelize")
 
 // Sets up the Express App
 // =============================================================
