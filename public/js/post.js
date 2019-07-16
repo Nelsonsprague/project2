@@ -2,14 +2,14 @@ $(document).ready(function() {
   // Getting jQuery references to the post body, title, form, and author select
   var bodyInput = $("#body");
   var titleInput = $("#title");
-  var cmsForm = $("#cms");
-  var authorSelect = $("#author");
+  var postForm = $("#post");
+  var userSelect = $("#users");
   // Adding an event listener for when the form is submitted
-  $(cmsForm).on("submit", handleFormSubmit);
+  $(postForm).on("submit", handleFormSubmit);
   // Gets the part of the url that comes after the "?" (which we have if we're updating a post)
   var url = window.location.search;
   var postId;
-  var authorId;
+  var userId;
   // Sets a flag for whether or not we're updating a post to be false initially
   var updating = false;
 
@@ -20,12 +20,12 @@ $(document).ready(function() {
     getPostData(postId, "post");
   }
   // Otherwise if we have an author_id in our url, preset the author select box to be our Author
-  else if (url.indexOf("?author_id=") !== -1) {
-    authorId = url.split("=")[1];
+  else if (url.indexOf("?user_id=") !== -1) {
+    userId = url.split("=")[1];
   }
 
   // Getting the authors, and their posts
-  getAuthors();
+  getUsers();
 
   // A function for handling what happens when the form to create a new post is submitted
   function handleFormSubmit(event) {
@@ -42,7 +42,7 @@ $(document).ready(function() {
       body: bodyInput
         .val()
         .trim(),
-      AuthorId: authorSelect.val()
+      UserId: authorSelect.val()
     };
 
     // If we're updating a post run updatePost to update a post
@@ -91,7 +91,7 @@ $(document).ready(function() {
   }
 
   // A function to get Authors and then render our list of Authors
-  function getAuthors() {
+  function getUsers() {
     $.get("/api/authors", renderAuthorList);
   }
   // Function to either render a list of authors, or if there are none, direct the user to the page

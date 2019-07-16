@@ -10,31 +10,31 @@ $(document).ready(function() {
   // Variable to hold our posts
   var posts;
 
-  // The code below handles the case where we want to get blog posts for a specific author
-  // Looks for a query param in the url for author_id
+  // The code below handles the case where we want to get blog posts for a specific user
+  // Looks for a query param in the url for user_id
   var url = window.location.search;
-  var authorId;
-  if (url.indexOf("?author_id=") !== -1) {
-    authorId = url.split("=")[1];
-    getPosts(authorId);
+  var userId;
+  if (url.indexOf("?user_id=") !== -1) {
+    userId = url.split("=")[1];
+    getPosts(userId);
   }
-  // If there's no authorId we just get all posts as usual
+  // If there's no userId we just get all posts as usual
   else {
     getPosts();
   }
 
 
   // This function grabs posts from the database and updates the view
-  function getPosts(author) {
-    authorId = author || "";
-    if (authorId) {
-      authorId = "/?author_id=" + authorId;
+  function getPosts(user) {
+    userId = user || "";
+    if (userId) {
+      userId = "/?user_id=" + userId;
     }
-    $.get("/api/posts" + authorId, function(data) {
+    $.get("/api/posts" + userId, function(data) {
       console.log("Posts", data);
       posts = data;
       if (!posts || !posts.length) {
-        displayEmpty(author);
+        displayEmpty(user);
       }
       else {
         initializeRows();
@@ -79,9 +79,9 @@ $(document).ready(function() {
     editBtn.addClass("edit btn btn-info");
     var newPostTitle = $("<h2>");
     var newPostDate = $("<small>");
-    var newPostAuthor = $("<h5>");
-    newPostAuthor.text("Written by: " + post.Author.name);
-    newPostAuthor.css({
+    var newPostuser = $("<h5>");
+    newPostuser.text("Written by: " + post.user.name);
+    newPostuser.css({
       float: "right",
       color: "blue",
       "margin-top":
@@ -97,7 +97,7 @@ $(document).ready(function() {
     newPostCardHeading.append(deleteBtn);
     newPostCardHeading.append(editBtn);
     newPostCardHeading.append(newPostTitle);
-    newPostCardHeading.append(newPostAuthor);
+    newPostCardHeading.append(newPostuser);
     newPostCardBody.append(newPostBody);
     newPostCard.append(newPostCardHeading);
     newPostCard.append(newPostCardBody);
@@ -120,7 +120,7 @@ $(document).ready(function() {
       .parent()
       .parent()
       .data("post");
-    window.location.href = "/cms?post_id=" + currentPost.id;
+    window.location.href = "/post?post_id=" + currentPost.id;
   }
 
   // This function displays a message when there are no posts
@@ -128,12 +128,12 @@ $(document).ready(function() {
     var query = window.location.search;
     var partial = "";
     if (id) {
-      partial = " for Author #" + id;
+      partial = " for user #" + id;
     }
     blogContainer.empty();
     var messageH2 = $("<h2>");
     messageH2.css({ "text-align": "center", "margin-top": "50px" });
-    messageH2.html("No posts yet" + partial + ", navigate <a href='/cms" + query +
+    messageH2.html("No posts yet" + partial + ", navigate <a href='/post" + query +
     "'>here</a> in order to get started.");
     blogContainer.append(messageH2);
   }
