@@ -1,7 +1,26 @@
 var db = require("../models");
+var axios = require("axios");
+var jpeg = require('jpeg-js');
+var fs = require('fs');
+
+var tempid = 112126428;// drop down
+var text0 = "hi there";//input
+var text1 = "sup bae";//input 
+
+
 
 module.exports = function(app) {
-  app.get("/api/authors", function(req, res) {
+  app.get("/testing", function(req,res){
+  
+    axios.get("https://api.imgflip.com/caption_image?template_id="+ tempid + "&username=randomusername100&password=password&text0=" + text0 + "&text1="+ text1)
+    .then(function (result) {
+      console.log(result.data.data.url)
+      
+    });
+  });
+
+
+      app.get("/api/authors", function(req, res) {
     // Here we add an "include" property to our options in our findAll query
     // We set the value to an array of the models we want to include in a left outer join
     // In this case, just db.Post
