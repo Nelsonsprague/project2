@@ -1,4 +1,21 @@
+var memesArray = [
+    {
+        id: 112126428,
+        name: "Distracted Boyfriend"
+    },
+    {
+        id: 102156234,
+        name: "Mocking Spongebob"
+    },
+    {
+        id: 438680,
+        name: "Batman Slapping Robin"
+    }
+
+];
+
 $(document).ready(function () {
+
     // Getting jQuery references to the post body, title, form, and author select
     var titleInput = $("#title");
     var memeInput = $("#meme");
@@ -28,6 +45,9 @@ $(document).ready(function () {
 
     // Getting the authors, and their posts
     getAuthors();
+
+    // Getting the meme images
+    getMemes(memesArray);
 
     // A function for handling what happens when the form to create a new post is submitted
     function handleFormSubmit(event) {
@@ -102,6 +122,7 @@ $(document).ready(function () {
     function getAuthors() {
         $.get("/api/authors", renderAuthorList);
     }
+
     // Function to either render a list of authors, or if there are none, direct the user to the page
     // to create an author first
     function renderAuthorList(data) {
@@ -125,6 +146,35 @@ $(document).ready(function () {
         var listOption = $("<option>");
         listOption.attr("value", author.id);
         listOption.text(author.name);
+        return listOption;
+    }
+
+    // ------------- MEME LIST ------
+
+    function getMemes(memesArray) {
+        
+        var rowsToAdd = [];
+        for (var i = 0; i < memesArray.length; i++) {
+            rowsToAdd.push(createMemeRow(memesArray[i]));
+        }
+        memeInput.empty();
+        console.log(rowsToAdd);
+        console.log(memeInput);
+        memeInput.append(rowsToAdd);
+        // memeInput.val(authorId);
+    }
+
+    // Creates the meme options in the dropdown
+    function createMemeRow(meme) {
+        console.log("HELLO!");
+        console.log(memesArray);
+    
+            var listOption = $("<option>");
+            listOption.attr("value", meme.id);
+            listOption.text(meme.name);
+            console.log(listOption);
+        
+        
         return listOption;
     }
 
