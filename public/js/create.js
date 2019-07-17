@@ -15,4 +15,6 @@ function memeMaker(){
 });
 }
 
-// memeMaker();
+$(".btn-create").on("click", function(){
+  memeMaker();
+})
