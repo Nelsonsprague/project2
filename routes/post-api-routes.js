@@ -12,6 +12,22 @@ var db = require("../models");
 // =============================================================
 module.exports = function(app) {
 
+  app.get("/testing", function(req,res){
+  
+    console.log("in testing");
+    
+    // try{
+      axios.get("https://api.imgflip.com/caption_image?template_id="+ tempid + "&username=randomusername100&password=password&text0=" + text0 + "&text1="+ text1)
+      .then(function (result) {
+        console.log(result.data.data.url)
+        
+      })
+    // }catch(err){
+    //   console.log("tesing error");
+    // }
+
+  });
+
   // GET route for getting all of the posts
   app.get("/api/posts", function(req, res) {
     var query = {};
@@ -76,3 +92,14 @@ module.exports = function(app) {
     });
   });
 };
+
+
+var db = require("../models");
+var axios = require("axios");
+var jpeg = require('jpeg-js');
+var fs = require('fs');
+
+var tempid = 112126428;// drop down
+var text0 = "hi there";//input
+var text1 = "sup bae";//input 
+
