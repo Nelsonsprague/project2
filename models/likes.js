@@ -9,15 +9,15 @@ module.exports = function (sequelize, DataTypes) {
     },
   });
 
-  Likes.associate = function(models) {
-    // A Post should belong to User
-    // A post can't be created without a User due to the foreign key
-    Likes.belongsTo(models.User, {
-      foreignKey: {
-        allowNull: false
-      }
-    }); 
-  };
+//   Likes.associate = function(models) {
+//     // A Post should belong to User
+//     // A post can't be created without a User due to the foreign key
+//     Likes.belongsTo(models.UserInfo, {
+//       foreignKey: {
+//         allowNull: false
+//       }
+//     }); 
+//   };
   
   return Likes;
 };
