@@ -1,8 +1,8 @@
 $(document).ready(function() {
   /* global moment */
 
-  // homeContainer holds all of our posts
-  var homeContainer = $(".home-container");
+  // blogContainer holds all of our posts
+  var blogContainer = $(".blog-container");
   var postCategorySelect = $("#category");
   // Click events for the edit and delete buttons
   $(document).on("click", "button.delete", handlePostDelete);
@@ -10,31 +10,31 @@ $(document).ready(function() {
   // Variable to hold our posts
   var posts;
 
-  // The code below handles the case where we want to get home posts for a specific user
-  // Looks for a query param in the url for user_id
+  // The code below handles the case where we want to get blog posts for a specific author
+  // Looks for a query param in the url for author_id
   var url = window.location.search;
-  var userId;
-  if (url.indexOf("?user_id=") !== -1) {
-    userId = url.split("=")[1];
-    getPosts(userId);
+  var authorId;
+  if (url.indexOf("?author_id=") !== -1) {
+    authorId = url.split("=")[1];
+    getPosts(authorId);
   }
-  // If there's no userId we just get all posts as usual
+  // If there's no authorId we just get all posts as usual
   else {
     getPosts();
   }
 
 
   // This function grabs posts from the database and updates the view
-  function getPosts(user) {
-    userId = user || "";
-    if (userId) {
-      userId = "/?user_id=" + userId;
+  function getPosts(author) {
+    authorId = author || "";
+    if (authorId) {
+      authorId = "/?author_id=" + authorId;
     }
-    $.get("/api/posts" + userId, function(data) {
+    $.get("/api/posts" + authorId, function(data) {
       console.log("Posts", data);
       posts = data;
       if (!posts || !posts.length) {
-        displayEmpty(user);
+        displayEmpty(author);
       }
       else {
         initializeRows();
@@ -53,14 +53,14 @@ $(document).ready(function() {
       });
   }
 
-  // InitializeRows handles appending all of our constructed post HTML inside homeContainer
+  // InitializeRows handles appending all of our constructed post HTML inside blogContainer
   function initializeRows() {
-    homeContainer.empty();
+    blogContainer.empty();
     var postsToAdd = [];
     for (var i = 0; i < posts.length; i++) {
       postsToAdd.push(createNewRow(posts[i]));
     }
-    homeContainer.append(postsToAdd);
+    blogContainer.append(postsToAdd);
   }
 
   // This function constructs a post's HTML
@@ -79,9 +79,9 @@ $(document).ready(function() {
     editBtn.addClass("edit btn btn-info");
     var newPostTitle = $("<h2>");
     var newPostDate = $("<small>");
-    var newPostuser = $("<h5>");
-    newPostuser.text("Written by: " + post.Users.username);
-    newPostuser.css({
+    var newPostAuthor = $("<h5>");
+    newPostAuthor.text("Written by: " + post.Author.name);
+    newPostAuthor.css({
       float: "right",
       color: "blue",
       "margin-top":
@@ -97,7 +97,7 @@ $(document).ready(function() {
     newPostCardHeading.append(deleteBtn);
     newPostCardHeading.append(editBtn);
     newPostCardHeading.append(newPostTitle);
-    newPostCardHeading.append(newPostuser);
+    newPostCardHeading.append(newPostAuthor);
     newPostCardBody.append(newPostBody);
     newPostCard.append(newPostCardHeading);
     newPostCard.append(newPostCardBody);
@@ -120,7 +120,7 @@ $(document).ready(function() {
       .parent()
       .parent()
       .data("post");
-    window.location.href = "/post?post_id=" + currentPost.id;
+    window.location.href = "/cms?post_id=" + currentPost.id;
   }
 
   // This function displays a message when there are no posts
@@ -128,19 +128,14 @@ $(document).ready(function() {
     var query = window.location.search;
     var partial = "";
     if (id) {
-      partial = " for user #" + id;
+      partial = " for Author #" + id;
     }
-    homeContainer.empty();
+    blogContainer.empty();
     var messageH2 = $("<h2>");
     messageH2.css({ "text-align": "center", "margin-top": "50px" });
-    messageH2.html("No posts yet" + partial + ", navigate <a href='/post" + query +
+    messageH2.html("No posts yet" + partial + ", navigate <a href='/cms" + query +
     "'>here</a> in order to get started.");
-    homeContainer.append(messageH2);
+    blogContainer.append(messageH2);
   }
 
-});
-
-
-$(".menu").click(function(){
-  $(this).parent().toggleClass("close");
 });
