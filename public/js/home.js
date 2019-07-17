@@ -80,7 +80,7 @@ $(document).ready(function() {
     var newPostTitle = $("<h2>");
     var newPostDate = $("<small>");
     var newPostuser = $("<h5>");
-    newPostuser.text("Written by: " + post.user.username);
+    newPostuser.text("Written by: " + post.Users.username);
     newPostuser.css({
       float: "right",
       color: "blue",

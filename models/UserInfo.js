@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-  var User = sequelize.define("User", {
+  var UserInfo = sequelize.define("Users", {
     username: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -25,21 +25,21 @@ module.exports = function (sequelize, DataTypes) {
     }
   });
 
-  User.associate = function(models) {
+  UserInfo.associate = function(models) {
     // Associating Users with Memes
     // When a User is deleted, also delete associated memes
-    User.hasMany(models.Meme, {
+    UserInfo.hasMany(models.Meme, {
       onDelete: "cascade"
     }); 
   };
 
-  User.associate = function(models) {
+  UserInfo.associate = function(models) {
     // Associating Users with Likes
     // When a User is deleted, also delete associated likes
-    User.hasMany(models.Likes, {
+    UserInfo.hasMany(models.Likes, {
       onDelete: "cascade"
     }); 
   };
   
-  return User;
+  return UserInfo;
 };
