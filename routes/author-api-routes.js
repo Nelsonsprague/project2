@@ -1,6 +1,5 @@
 var db = require("../models");
 var axios = require("axios");
-var jpeg = require('jpeg-js');
 var fs = require('fs');
 
 var tempid = 112126428;// drop down

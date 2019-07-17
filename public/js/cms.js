@@ -52,12 +52,26 @@ $(document).ready(function () {
     // A function for handling what happens when the form to create a new post is submitted
     function handleFormSubmit(event) {
         event.preventDefault();
+        
         // Wont submit the post if we are missing a body, title, or author
         if (!titleInput.val().trim() || !text1Input.val().trim() || !text2Input.val().trim() || !authorSelect.val()) {
             return;
         }
-        // Constructing a newPost object to hand to the database
-        var newPost = {
+        var tempid = memeInput.val();
+        var text0 = text1Input.val().trim();
+        var text1 = text2Input.val().trim();
+        text0 = _.replace(text0, " ", "%20");
+        text1 = _.replace(text1, " ", "%20");
+        var url = "https://api.imgflip.com/caption_image?template_id="+ tempid + "&username=randomusername100&password=password&text0=" + text0 + "&text1="+ text1;
+        console.log(url);
+        $.ajax({
+            url: url,
+            method: "GET"
+        })
+        .then(function (result) {
+          console.log(result.data.url)
+          var newPost = {
+            url: result.data.url,
             title: titleInput
                 .val()
                 .trim(),
@@ -80,6 +94,12 @@ $(document).ready(function () {
         } else {
             submitPost(newPost);
         }
+          
+        });
+      
+    
+        // Constructing a newPost object to hand to the database
+        
     }
 
     // Submits a new post and brings user to blog page upon completion
