@@ -1,5 +1,9 @@
 module.exports = function(sequelize, DataTypes) {
   var Post = sequelize.define("Post", {
+    url: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     title: {
       type: DataTypes.STRING,
       allowNull: false,
