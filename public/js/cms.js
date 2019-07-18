@@ -19,6 +19,8 @@ $(document).ready(function () {
     // Getting jQuery references to the post body, title, form, and author select
     var titleInput = $("#title");
     var memeInput = $("#meme");
+    var memePhoto = $("#memePhoto");
+
     var text1Input = $("#text0");
     var text2Input = $("#text1");
     var cmsForm = $("#cms");
@@ -71,12 +73,13 @@ $(document).ready(function () {
         .then(function (result) {
           console.log(result.data.url)
           var newPost = {
-            url: result.data.url,
             title: titleInput
                 .val()
                 .trim(),
             memeInput: memeInput
-                .val(),
+                .val()
+                .trim(),
+            memeUrl: result.data.url,
             text1Input: text1Input
                 .val()
                 .trim(),
@@ -125,9 +128,12 @@ $(document).ready(function () {
         $.get(queryUrl, function (data) {
             if (data) {
                 console.log(data.AuthorId || data.id);
+                memePhoto.append("<img src='" + data.memeUrl + "' width='100%'>");
+
                 // If this post exists, prefill our cms forms with its data
                 titleInput.val(data.title);
                 memeInput.val(data.memeInput);
+                memePhoto.val(data.memeUrl);
                 text1Input.val(data.text1Input);
                 text2Input.val(data.text2Input);
                 authorId = data.AuthorId || data.id;
