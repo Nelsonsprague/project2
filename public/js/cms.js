@@ -10,8 +10,37 @@ var memesArray = [
     {
         id: 438680,
         name: "Batman Slapping Robin"
-    }
+    },{
+        id: 61579,
+        name: "One Does Not Simply"
+    },{
+        id: 61532,
+        name: "The Most Interesting Man In The World"
+    },{
 
+        id:89370399,
+        name: "Roll Safe Think About It"	
+    },{
+
+        id: 4087833,
+        name: "Waiting Skeleton"	
+    },{
+
+        id: 101470,
+        name:	"Ancient Aliens"	
+    },{
+
+        id: 5496396,
+        name: "Leonardo Dicaprio Cheers"
+    },{
+
+        id: 124822590,
+        name: "Left Exit 12 Off Ramp"
+    },{
+
+        id: 61520,
+        name: "Futurama Fry"
+    } 
 ];
 
 $(document).ready(function () {
