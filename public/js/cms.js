@@ -166,6 +166,9 @@ $(document).ready(function () {
                 text1Input.val(data.text1Input);
                 text2Input.val(data.text2Input);
                 authorId = data.AuthorId || data.id;
+
+                // hide slideshow for all posts
+                $("#carouselExampleIndicators").addClass("d-none");
                 // If we have a post with this id, set a flag for us to know to update the post
                 // when we hit submit
                 updating = true;
