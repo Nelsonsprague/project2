@@ -173,7 +173,5 @@ $(document).ready(function () {
     }).then(function(response) {
       console.log(response)
     })
-    
   };
-
 });
