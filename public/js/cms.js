@@ -10,8 +10,37 @@ var memesArray = [
     {
         id: 438680,
         name: "Batman Slapping Robin"
-    }
+    },{
+        id: 61579,
+        name: "One Does Not Simply"
+    },{
+        id: 61532,
+        name: "The Most Interesting Man In The World"
+    },{
 
+        id:89370399,
+        name: "Roll Safe Think About It"	
+    },{
+
+        id: 4087833,
+        name: "Waiting Skeleton"	
+    },{
+
+        id: 101470,
+        name:	"Ancient Aliens"	
+    },{
+
+        id: 5496396,
+        name: "Leonardo Dicaprio Cheers"
+    },{
+
+        id: 124822590,
+        name: "Left Exit 12 Off Ramp"
+    },{
+
+        id: 61520,
+        name: "Futurama Fry"
+    } 
 ];
 
 $(document).ready(function () {
@@ -138,6 +167,9 @@ $(document).ready(function () {
                 text1Input.val(data.text1Input);
                 text2Input.val(data.text2Input);
                 authorId = data.AuthorId || data.id;
+
+                // hide slideshow for all posts
+                $("#carouselExampleIndicators").addClass("d-none");
                 // If we have a post with this id, set a flag for us to know to update the post
                 // when we hit submit
                 updating = true;

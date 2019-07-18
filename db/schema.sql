@@ -1,5 +1,5 @@
 DROP DATABASE IF EXISTS contest_db;
--- Creates the "blogger" database --
+
 CREATE DATABASE contest_db;
 
 USE contest_db;
