@@ -25,6 +25,11 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.TEXT,
       allowNull: false,
       len: [1]
+    },
+    memeLikes: {
+      type: DataTypes.INTEGER,
+      allownull: false,
+      defaultValue: 0
     }
   });
 
