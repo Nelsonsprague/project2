@@ -49,3 +49,14 @@ button.edit {
 .top-30 {
   margin-top: 30px;
 }
+
+.caro-caption {
+    right: 15%;
+    top: 0;
+    left: 15%;
+    z-index: 10;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #fff;
+    text-align: center;
+}

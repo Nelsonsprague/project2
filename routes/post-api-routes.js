@@ -92,7 +92,6 @@ module.exports = function(app) {
   });
 };
 
-
 var db = require("../models");
 var axios = require("axios");
 var jpeg = require('jpeg-js');
