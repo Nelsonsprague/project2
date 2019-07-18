@@ -1,9 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
   var Post = sequelize.define("Post", {
-    url: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
     title: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -15,6 +11,10 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.TEXT,
       allowNull: true,
       len: [1]
+    },
+    memeUrl: {
+      type: DataTypes.STRING,
+      allowNull: false
     },
     text1Input: {
       type: DataTypes.TEXT,

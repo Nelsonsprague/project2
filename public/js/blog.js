@@ -91,7 +91,7 @@ $(document).ready(function() {
     newPostCardBody.addClass("card-body");
     var newPostBody = $("<p>");
     newPostTitle.text(post.title + " ");
-    newPostBody.text(post.body);
+    newPostBody.html("<img src='" + post.memeUrl + "' class='w-100'>");
     newPostDate.text(formattedDate);
     newPostTitle.append(newPostDate);
     newPostCardHeading.append(deleteBtn);
