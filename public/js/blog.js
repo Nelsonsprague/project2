@@ -1,12 +1,12 @@
-$(document).ready(function() {
+$(document).ready(function () {
   /* global moment */
-
   // blogContainer holds all of our posts
   var blogContainer = $(".blog-container");
   var postCategorySelect = $("#category");
   // Click events for the edit and delete buttons
   $(document).on("click", "button.delete", handlePostDelete);
   $(document).on("click", "button.edit", handlePostEdit);
+  $(document).on("click", "button.vote", addLike);
   // Variable to hold our posts
   var posts;
 
@@ -23,20 +23,18 @@ $(document).ready(function() {
     getPosts();
   }
 
-
   // This function grabs posts from the database and updates the view
   function getPosts(author) {
     authorId = author || "";
     if (authorId) {
       authorId = "/?author_id=" + authorId;
     }
-    $.get("/api/posts" + authorId, function(data) {
+    $.get("/api/posts" + authorId, function (data) {
       console.log("Posts", data);
       posts = data;
       if (!posts || !posts.length) {
         displayEmpty(author);
-      }
-      else {
+      } else {
         initializeRows();
       }
     });
@@ -45,10 +43,10 @@ $(document).ready(function() {
   // This function does an API call to delete posts
   function deletePost(id) {
     $.ajax({
-      method: "DELETE",
-      url: "/api/posts/" + id
-    })
-      .then(function() {
+        method: "DELETE",
+        url: "/api/posts/" + id
+      })
+      .then(function () {
         getPosts(postCategorySelect.val());
       });
   }
@@ -76,7 +74,12 @@ $(document).ready(function() {
     deleteBtn.addClass("delete btn btn-danger");
     var editBtn = $("<button>");
     editBtn.text("EDIT");
+
     editBtn.addClass("edit btn btn-info");
+    var voteBtn = $("<button>");
+    voteBtn.text("0");
+    voteBtn.addClass("vote btn btn-success vote-button");
+
     var newPostTitle = $("<h2>");
     var newPostDate = $("<small>");
     var newPostAuthor = $("<h5>");
@@ -84,8 +87,7 @@ $(document).ready(function() {
     newPostAuthor.css({
       float: "right",
       color: "blue",
-      "margin-top":
-      "-10px"
+      "margin-top": "-10px"
     });
     var newPostCardBody = $("<div>");
     newPostCardBody.addClass("card-body");
@@ -97,6 +99,7 @@ $(document).ready(function() {
     newPostTitle.append(newPostDate);
     newPostCardHeading.append(deleteBtn);
     newPostCardHeading.append(editBtn);
+    newPostCardHeading.append(voteBtn);
     newPostCardHeading.append(newPostTitle);
     newPostCardHeading.append(newPostAuthor);
     newPostCardBody.append(newPostBody);
@@ -133,10 +136,44 @@ $(document).ready(function() {
     }
     blogContainer.empty();
     var messageH2 = $("<h2>");
-    messageH2.css({ "text-align": "center", "margin-top": "50px" });
+    messageH2.css({
+      "text-align": "center",
+      "margin-top": "50px"
+    });
     messageH2.html("No posts yet" + partial + ", navigate <a href='/cms" + query +
-    "'>here</a> in order to get started.");
+      "'>here</a> in order to get started.");
     blogContainer.append(messageH2);
   }
+
+  var likesCount = 0;
+  var newlikesCount;
+  function addLike() {
+    var currentPost = $(this)
+      .parent()
+      .parent()
+      .data("post");
+    
+    likesCount += 1;
+    newlikesCount = likesCount;
+    $(this).text(newlikesCount);
+    updateLikes();
+  };
+
+  function getLikes() {
+    $.get("/api/posts", function(data) {
+      like = data;
+    });
+  };
+
+  function updateLikes(getLikes) {
+    $.ajax({
+      method: "PUT",
+      url: "/api/posts",
+      data: getLikes
+    }).then(function(response) {
+      console.log(response)
+    })
+    
+  };
 
 });

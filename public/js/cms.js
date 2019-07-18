@@ -86,6 +86,7 @@ $(document).ready(function () {
             text2Input: text2Input
                 .val()
                 .trim(),
+            memeLikes: memeLikes.val(),
             AuthorId: authorSelect.val()
         };
 

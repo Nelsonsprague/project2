@@ -90,6 +90,18 @@ module.exports = function(app) {
       res.json(dbPost);
     });
   });
+
+  // app.put("/api/posts", function(req, res) {
+  //   db.Post.update(
+  //     $(this).id,
+  //     {
+  //       where: {
+  //         memeLikes: req.body.memeLikes,
+  //       }
+  //     }).then(function(dbPost) {
+  //     res.json(dbPost);
+  //   });
+  // });
 };
 
 
