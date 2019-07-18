@@ -89,9 +89,10 @@ $(document).ready(function() {
     });
     var newPostCardBody = $("<div>");
     newPostCardBody.addClass("card-body");
-    var newPostBody = $("<p>");
+    var newPostBody = $("<img>");
     newPostTitle.text(post.title + " ");
-    newPostBody.html("<img src='" + post.memeUrl + "' class='w-100'>");
+    newPostBody.attr("src", post.memeUrl);
+    newPostBody.addClass("w-100");
     newPostDate.text(formattedDate);
     newPostTitle.append(newPostDate);
     newPostCardHeading.append(deleteBtn);

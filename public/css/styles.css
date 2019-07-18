@@ -16,6 +16,10 @@ button.edit {
   margin: 5px;
 }
 
+.card-body {
+    padding: 0;
+}
+
 .author-container {
   margin-top: 50px;
 }
