@@ -56,7 +56,7 @@ $(document).ready(function () {
     // InitializeRows handles appending all of our constructed post HTML inside blogContainer
     function initializeRows() {
       blogContainer.empty();
-      var postsToAdd = [];
+      var postsToAdd = _.sortBy(posts, ['post', 'memeLikes']).reverse()
       for (var i = 0; i < posts.length; i++) {
         postsToAdd.push(createNewRow(posts[i]));
       }
@@ -115,7 +115,6 @@ $(document).ready(function () {
       newPostCard.append(newPostCardBody);
       newPostCard.data("post", post);
 
-      
       return newPostCard;
     }
   
@@ -138,7 +137,6 @@ $(document).ready(function () {
           });
 
         $(currentBtn).attr("disabled", true);
-        
       });
   
     // This function figures out which post we want to delete and then calls deletePost
