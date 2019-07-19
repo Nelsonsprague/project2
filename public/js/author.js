@@ -34,7 +34,7 @@ $(document).ready(function() {
 
   // Function for creating a new list row for authors
   function createAuthorRow(authorData) {
-    var newTr = $("<tr>");
+    var newTr = $("<tr class='newArtist'>");
     newTr.data("author", authorData);
     newTr.append("<td>" + authorData.name + "</td>");
     if (authorData.Posts) {

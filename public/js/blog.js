@@ -56,6 +56,7 @@ $(document).ready(function () {
     // InitializeRows handles appending all of our constructed post HTML inside blogContainer
     function initializeRows() {
       blogContainer.empty();
+      blogContainer.html("<h1 class='text-center mt-5 mb-5' style='font-size: 20pt; font-weight: 900;'>Welcome to... <br><p style='font-size: 90pt; text-shadow: -5px -5px 0 #000, 5px -5px 0 #000, -5px 5px 0 #000, 5px 5px 0 #000;'>MEME GEN!</p></h1>");
       var postsToAdd = _.sortBy(posts, ['post', 'memeLikes']).reverse()
       console.log(postsToAdd)
       var newArr = [];
@@ -76,20 +77,24 @@ $(document).ready(function () {
 
       var newPostCard = $("<div>");
       newPostCard.addClass("card");
+      newPostCard.addClass("hvr-grow");
       var newPostCardHeading = $("<div>");
       newPostCardHeading.addClass("card-header");
 
       var deleteBtn = $("<button>");
       deleteBtn.text("x");
       deleteBtn.addClass("delete btn btn-danger");
+      deleteBtn.addClass("hvr-float-shadow");
 
       var editBtn = $("<button>");
       editBtn.text("EDIT");
       editBtn.addClass("edit btn btn-info");
+      editBtn.addClass("hvr-float-shadow");
       
       var voteBtn = $("<button data-likes=" + totalLikes + " data-id=" + post.id + ">");
       voteBtn.text(totalLikes);
-      voteBtn.addClass("vote btn btn-success vote-button class" + post.id + "");  
+      voteBtn.addClass("vote btn btn-success vote-button class" + post.id + ""); 
+      voteBtn.addClass("hvr-float-shadow"); 
       
       var newPostTitle = $("<h2>");
       var newPostDate = $("<small>");
@@ -133,7 +138,7 @@ $(document).ready(function () {
         currentTotalLikes++;
       
         var currentBtn = ".class" + buttonId + ""
-        $(currentBtn).text(currentTotalLikes);
+        $(currentBtn).html("<i class='fas fa-thumbs-up'></i>");
 
         $.ajax({
             method: "PUT",
@@ -144,6 +149,7 @@ $(document).ready(function () {
           });
 
         $(currentBtn).attr("disabled", true);
+
       });
   
     // This function figures out which post we want to delete and then calls deletePost
