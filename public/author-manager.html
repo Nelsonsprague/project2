@@ -2,57 +2,70 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<title>CMS - Express</title>
-	<!-- Latest compiled and minified CSS & JS -->
-	<link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="css/styles.css" media="screen" title="no title">
-	<script src="https://code.jquery.com/jquery.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <title>MEME GEN</title>
+    <!-- Latest compiled and minified CSS & JS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/cyborg/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-mtS696VnV9qeIoC8w/PrPoRzJ5gwydRVn0oQ9b+RJOPxE1Z1jXuuJcyeNxvNZhdx" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css" media="screen" title="no title">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
 
 <body>
-	<div class="container">
-		<div class="row mt-4">
-      <div class="col-md-2 col-sm-2">
-        <a class="btn btn-light" href="/blog">Go to Blog</a>
-      </div>
-			<div class="col-md-2 col-sm-2">
-        <a class="btn btn-light" href="/cms">New Post</a>
-      </div>
-    </div>
-		<div class="row">
-			<div class="col-md-8 offset-md-2">
-				<div class="author-container">
-					<h1>Authors</h1>
-					<table class="table table-striped">
-						<thead>
-							<tr>
-								<th>Name</th>
-								<th># of Posts</th>
-								<th>See Author's Posts</th>
-								<th>New Post</th>
-								<th>Delete Author</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr id="form-row">
-								<form id="author-form">
-									<td colspan="4">
-										<input placeholder="Enter a name" id="author-name" type="text" />
-									</td>
-									<td><button type="submit" class="btn btn-success">Create Author</button>
-									</td>
-								</form>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-		</d>
-		<!-- Custom Script -->
-		<script src="js/author.js" type="text/javascript"></script>
+    <div style="background-image: url('https://thewallpaper.co//wp-content/uploads/2017/10preview/mobile-dark-backgrounds-vector-funny-humor-funny-images-cat-grumpy-quote-meme-backgrounds-humor-background-images.jpg'); background-size: 100% 100%; background-repeat:no-repeat; background-attachment: fixed; height: 100vh;">
+
+        <div class="container-fluid mt-0 blog">
+
+            <div class="row">
+                <div id="sidebar" class="col-md-2 fixed-top 100vh pt-5 ml-5">
+                    <ul class="nav flex-column">
+                        <li class="btn btn-light nav-item mb-3 text-left hvr-grow-rotate">
+                            <a class="nav-link color-green" href="/blog">Back to MEMES</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-md"></div>
+
+                <div class="col-md-5" style="padding-top: 150px;">
+
+                        <div class="author-container">
+                            <h1>New Artists!</h1>
+                            <table class="table thead-dark text-white">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th># of Posts</th>
+                                        <th>See Author's Posts</th>
+                                        <th>New Post</th>
+                                        <th>Delete Author</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr id="form-row">
+                                        <form id="author-form">
+                                            <td colspan="4">
+                                                <input placeholder="Enter a name" id="author-name" type="text" />
+                                            </td>
+                                            <td><button type="submit" class="btn btn-success">Create Artist!</button>
+                                            </td>
+                                        </form>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                </div>
+
+                <div class="col-md"></div>
+            </div>
+        </div>
+
+        <!-- Custom Script -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.0/moment.min.js"
+            type="text/javascript"></script>
+        <script src="js/author.js" type="text/javascript"></script>
 
 </body>
 
