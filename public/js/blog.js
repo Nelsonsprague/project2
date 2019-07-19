@@ -125,7 +125,7 @@ $(document).ready(function () {
 
         var currentTotalLikes = $(this).data("likes");
         currentTotalLikes++;
-
+      
         var currentBtn = ".class" + buttonId + ""
         $(currentBtn).text(currentTotalLikes);
 
@@ -177,3 +177,14 @@ $(document).ready(function () {
       blogContainer.append(messageH2);
     }
   });
+
+//   function updateLikes(getLikes) {
+//     $.ajax({
+//       method: "PUT",
+//       url: "/api/posts",
+//       data: getLikes
+//     }).then(function(response) {
+//       console.log(response)
+//     })
+//   };
+});

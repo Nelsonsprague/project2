@@ -23,7 +23,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     text2Input: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      allowNull: true,
       len: [1]
     },
     memeLikes: {
