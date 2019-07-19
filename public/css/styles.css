@@ -1,19 +1,28 @@
+h5 {
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
 button.submit {
-  float: right;
+    float: right;
 }
 
 form#cms {
-  margin-top: 50px;
+    margin-top: 50px;
 }
 
 #cms textarea {
-  resize: none;
+    resize: none;
 }
 
 .card-header button.delete,
-button.edit {
-  float: right;
-  margin: 5px;
+button.edit,
+button.vote {
+    float: right;
+    margin: 5px;
+}
+
+.card {
+    margin-bottom: 50px;
 }
 
 .card-body {
@@ -21,33 +30,33 @@ button.edit {
 }
 
 .author-container {
-  margin-top: 50px;
+    margin-top: 50px;
 }
 
 .author-list {
-  margin-top: 25px;
+    margin-top: 25px;
 }
 
 .blog-container {
-  margin-top: 30px;
+    margin-top: 30px;
 }
 
 .blog {
-  margin-top: 30px;
+    margin-top: 30px;
 }
 
 .hidden {
-  display: none;
+    display: none;
 }
 
 #author-name {
-  width: 100%;
-  height: 35px;
-  margin-top: 5px;
+    width: 100%;
+    height: 35px;
+    margin-top: 5px;
 }
 
 .top-30 {
-  margin-top: 30px;
+    margin-top: 30px;
 }
 
 .caro-caption {

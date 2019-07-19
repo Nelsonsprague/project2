@@ -93,8 +93,11 @@ $(document).ready(function () {
       newPostAuthor.text("Written by: " + post.Author.name);
       newPostAuthor.css({
         float: "right",
-        color: "blue",
-        "margin-top": "-10px"
+        color: "white",
+        right: "25px",
+        top: "125px",
+        position: "absolute",
+        opacity: "0.5"
       });
       
       var newPostCardBody = $("<div>");
@@ -104,11 +107,11 @@ $(document).ready(function () {
       newPostBody.attr("src", post.memeUrl);
       newPostBody.addClass("w-100");
       newPostDate.text(formattedDate);
-      newPostTitle.append(newPostDate);
       newPostCardHeading.append(deleteBtn);
       newPostCardHeading.append(editBtn);
       newPostCardHeading.append(voteBtn);
       newPostCardHeading.append(newPostTitle);
+      newPostCardHeading.append(newPostDate);
       newPostCardHeading.append(newPostAuthor);
       newPostCardBody.append(newPostBody);
       newPostCard.append(newPostCardHeading);
