@@ -91,25 +91,18 @@ module.exports = function(app) {
     });
   });
 
-  // app.put("/api/posts", function(req, res) {
-  //   db.Post.update(
-  //     $(this).id,
-  //     {
-  //       where: {
-  //         memeLikes: req.body.memeLikes,
-  //       }
-  //     }).then(function(dbPost) {
-  //     res.json(dbPost);
-  //   });
-  // });
-};
+  // PUT route for updating meme likes
+  app.put("/api/likes/:id", function(req, res) {
+    db.Post.increment("memeLikes",{
+      where: {
+        id: req.params.id
+      }
+    }).then (function() {
+      res.status(200).end();
+    })
+  });
+}
 
 var db = require("../models");
 var axios = require("axios");
-var jpeg = require('jpeg-js');
-var fs = require('fs');
-
-var tempid = 112126428;// drop down
-var text0 = "hi there";//input
-var text1 = "sup bae";//input 
 
