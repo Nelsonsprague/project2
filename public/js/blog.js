@@ -57,14 +57,18 @@ $(document).ready(function () {
     function initializeRows() {
       blogContainer.empty();
       var postsToAdd = _.sortBy(posts, ['post', 'memeLikes']).reverse()
-      for (var i = 0; i < posts.length; i++) {
-        postsToAdd.push(createNewRow(posts[i]));
+      console.log(postsToAdd)
+      var newArr = [];
+      for (var i = 0; i < postsToAdd.length; i++) {
+        newArr.push(createNewRow(postsToAdd[i]));
       }
-      blogContainer.append(postsToAdd);
+      console.log(newArr)
+      blogContainer.append(newArr);
     }
   
     // This function constructs a post's HTML
     function createNewRow(post) {
+      console.log(post.memeLikes)
       var totalLikes = post.memeLikes;
 
       var formattedDate = new Date(post.createdAt);
