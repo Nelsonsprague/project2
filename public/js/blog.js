@@ -120,8 +120,7 @@ $(document).ready(function () {
     }
   
     // Updates post likes button on click
-    $(document).on("click", "button.vote", function(){
-        
+    $(document).on("click", "button.vote", function() {
         var buttonId = $(this).data("id")
 
         var currentTotalLikes = $(this).data("likes");
@@ -137,8 +136,10 @@ $(document).ready(function () {
             // event.preventDefault();
             console.log(currentTotalLikes);
           });
+
+        $(currentBtn).attr("disabled", true);
         
-      })
+      });
   
     // This function figures out which post we want to delete and then calls deletePost
     function handlePostDelete() {
