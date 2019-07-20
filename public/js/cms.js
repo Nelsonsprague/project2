@@ -1,45 +1,44 @@
 var memesArray = [
     {
         id: 112126428,
-        name: "Distracted Boyfriend"
+        name: "1. Distracted Boyfriend"
     },
     {
         id: 102156234,
-        name: "Mocking Spongebob"
+        name: "2. Mocking Spongebob"
     },
     {
         id: 438680,
-        name: "Batman Slapping Robin"
+        name: "3. Batman Slapping Robin"
     },{
         id: 61579,
-        name: "One Does Not Simply"
+        name: "4. One Does Not Simply"
+    },{
+        id:89370399,
+        name: "5. Roll Safe Think About It"	
     },{
         id: 61532,
-        name: "The Most Interesting Man In The World"
-    },{
-
-        id:89370399,
-        name: "Roll Safe Think About It"	
+        name: "6. The Most Interesting Man In The World"	
     },{
 
         id: 4087833,
-        name: "Waiting Skeleton"	
+        name: "7. Waiting Skeleton"	
     },{
 
         id: 101470,
-        name:	"Ancient Aliens"	
+        name: "8. Ancient Aliens"	
     },{
 
         id: 5496396,
-        name: "Leonardo Dicaprio Cheers"
+        name: "9. Leonardo Dicaprio Cheers"
     },{
 
         id: 124822590,
-        name: "Left Exit 12 Off Ramp"
+        name: "10. Left Exit 12 Off Ramp"
     },{
 
         id: 61520,
-        name: "Futurama Fry"
+        name: "111. Futurama Fry"
     } 
 ];
 
